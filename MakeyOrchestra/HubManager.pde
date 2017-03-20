@@ -9,9 +9,26 @@ class HubManager
     hubs = new ArrayList<Hub>();
   } 
   
-  public void update()
+  public void draw()
   {
-    for(int i=0;i<hubs.size();i++) hubs.get(i).update();
+    pushStyle();
+    pushMatrix();
+    translate(width/2,height/2);
+    fill(50);
+    ellipseMode(CENTER);
+    ellipse(0,0,globalRadius/3,globalRadius/3);
+    
+    
+    for(int i=0;i<hubs.size();i++)
+    {
+      float angle = (i*1.f/hubs.size())*PI*2;
+      hubs.get(i).update();
+      hubs.get(i).set(cos(angle)*globalRadius,sin(angle)*globalRadius);
+      hubs.get(i).draw();
+    }
+    
+    popMatrix();
+    popStyle();
   }
   
   public void addHub(String portName, int startTrack, int numTracks, String type)
@@ -26,6 +43,6 @@ class HubManager
       return;
     }
     
-    hubs.add(new Hub(parent, t , startTrack,numTracks, portName));
+    hubs.add(new Hub(parent, hubs.size(), t , startTrack,numTracks, portName));
   }
 }

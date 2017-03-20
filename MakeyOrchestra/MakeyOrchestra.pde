@@ -1,21 +1,32 @@
+//Global variables
 HubManager hubManager;
 OutputManager outputManager;
-
-//Global variables
 OscP5 osc;
-int totalTracks = 0;
+
+//
+int totalTracks;
+
+//display settings
+int globalRadius = 300;
+int flowerRadius = 100;
+int flowerSize = 30;
 
 void setup()
 {
+  //fullScreen(1); //force on second display
+  size(1280,800);
+  background(0);
+  
   osc = new OscP5(this,64000);
   
   initHubs();
-  initOutputs();
+  initOutputs();  
 }
 
 void draw()
 {
-  hubManager.update();
+  background(0);
+  hubManager.draw();
 }
 
 void initHubs()
