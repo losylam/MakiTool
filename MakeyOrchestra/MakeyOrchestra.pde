@@ -14,6 +14,8 @@ int flowerSize = 30;
 void setup()
 {
   //fullScreen(1); //force on second display
+  
+  frameRate(60);
   size(1280,800);
   background(0);
   
@@ -91,4 +93,32 @@ void trackVolumeCallback(int track, float volume)
 void triggerCallback(int trigger)
 {
   outputManager.sendTrigger(trigger);
+}
+
+
+//test
+void keyPressed()
+{
+  switch(key)
+  {
+    case '1':
+    hubManager.hubs.get(0).toggleTrackActive(0);
+    break;
+    
+    case '2':
+    hubManager.hubs.get(0).toggleTrackActive(1);
+    break;
+    
+    case '+':
+    hubManager.hubs.get(1).setTrackVolume(0,hubManager.hubs.get(1).trackVolumes[0]+.1f);
+    break;
+    
+     case '-':
+    hubManager.hubs.get(1).setTrackVolume(0,hubManager.hubs.get(1).trackVolumes[0]-.1f);
+    break;
+    
+    case 't':
+    hubManager.hubs.get(4).triggerTrack(0);
+    break;
+  }
 }
