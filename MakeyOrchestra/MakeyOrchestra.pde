@@ -9,7 +9,7 @@ int totalTracks;
 //display settings
 int globalRadius = 300;
 int flowerRadius = 100;
-int flowerSize = 30;
+int flowerSize = 31;
 
 void setup()
 {
