@@ -41,7 +41,7 @@ void initHubs()
   
   for(int i=0;i<hubLines.length;i++)
   {
-    
+    if(hubLines[i].charAt(0) == '#') continue;
     String[] hubSplit = hubLines[i].split(",");
     String type = hubSplit[2];
     int numTracks = parseInt(hubSplit[1]);
@@ -120,5 +120,8 @@ void keyPressed()
     case 't':
     hubManager.hubs.get(4).triggerTrack(0);
     break;
+    
+    case 'v':
+    for(int i=0;i<hubManager.hubs.size();i++) hubManager.hubs.get(i).showText = !hubManager.hubs.get(i).showText;
   }
 }

@@ -39,6 +39,11 @@ class Output
   
   public void sendMidiNote(int channel, int pitch, int velocity)
   {
+    if(midi == null)
+    {
+      println("Send note midi is null");
+      return;
+    }
     midi.sendNoteOn(channel, pitch, velocity);
   }
   
