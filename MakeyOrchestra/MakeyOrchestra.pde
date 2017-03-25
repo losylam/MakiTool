@@ -7,16 +7,16 @@ OscP5 osc;
 int totalTracks;
 
 //display settings
-int globalRadius = 300;
-int flowerRadius = 100;
+int globalRadius = 180;
+int flowerRadius = 80;
 int flowerSize = 31;
 
 void setup()
 {
-  //fullScreen(1); //force on second display
+  fullScreen(2); //force on second display
   
   frameRate(60);
-  size(1280,800);
+  //size(1280,800);
   background(0);
   
   osc = new OscP5(this,64000);
@@ -101,6 +101,10 @@ void keyPressed()
 {
   switch(key)
   {
+    case ' ':
+    hubManager.reset();
+    break;
+    
     case '1':
     hubManager.hubs.get(0).toggleTrackActive(0);
     break;

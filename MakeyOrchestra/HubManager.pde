@@ -31,6 +31,15 @@ class HubManager
     popStyle();
   }
   
+  public void reset()
+  {
+   for(int i=0;i<hubs.size();i++)
+   {
+     hubs.get(i).reset();
+   }
+  }
+  
+  
   public void addHub(String portName, int startTrack, int numTracks, String type)
   {
     HubType t = null;

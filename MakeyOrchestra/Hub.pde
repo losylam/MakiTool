@@ -64,6 +64,15 @@ class Hub extends PVector
     
     connect();
   }
+  public void reset()
+  {
+    for(int i=0;i<numTracks;i++)
+    {
+      trackAlphas[i] = 0;
+      setTrackActive(i,false);
+      setTrackVolume(i,.85f);
+    }
+  }
   
   public void draw()
   {
