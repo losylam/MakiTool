@@ -3,13 +3,18 @@ HubManager hubManager;
 OutputManager outputManager;
 OscP5 osc;
 
-//
+//global variables
 int totalTracks;
+
+//play settings
+boolean useVolume = false; // if false, volume pin will have no effect
 
 //display settings
 int globalRadius = 180;
 int flowerRadius = 80;
 int flowerSize = 31;
+
+
 
 void setup()
 {

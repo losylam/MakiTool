@@ -1,5 +1,5 @@
-COM15,5,track
-COM14,4,track
-COM13,5,track
+COM9,5,track
+COM12,4,track
+COM14,5,track
 #COM9,4,trigger
 #COM6,3,trigger

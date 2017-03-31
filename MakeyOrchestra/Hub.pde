@@ -224,6 +224,7 @@ class Hub extends PVector
   
   public void setTrackVolume(int index, float value)
   {
+    if(!useVolume) return;
     trackVolumes[index] = min(max(value,0),1);
     trackVolumeCallback(startTrack+index,trackVolumes[index]);
   }
