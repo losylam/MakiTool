@@ -15,21 +15,22 @@ class Output
     
     this.numTracks = numTracks;
     
-    if(!midiDeviceName.equals(""))
+    if(midiDeviceName.length() > 0)
     {
         midi = new MidiBus(this, -1, midiDeviceName);
     }
     
-    init();
   }
   
   public void init()
   {
+    /*
     for(int i=0;i<numTracks;i++)
     {
       sendTrackMute(i,true);
       sendTrackVolume(i,0.85);
     }
+    */
   }
  
   public void sendMessage(OscMessage m)
@@ -37,7 +38,7 @@ class Output
     osc.send(m,remote); 
   }
   
-  public void sendMidiNote(int channel, int pitch, int velocity)
+  public void sendMidiNote(int channel, int pitch, int velocity,boolean sendOffAfter)
   {
     if(midi == null)
     {
@@ -45,6 +46,11 @@ class Output
       return;
     }
     midi.sendNoteOn(channel, pitch, velocity);
+    if(sendOffAfter)
+    {
+      //delay(20);
+      midi.sendNoteOff(channel,pitch,0);
+    }
   }
   
   

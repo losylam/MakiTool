@@ -1,0 +1,4 @@
+COM4,3,track
+COM5,3,track
+COM6,4,track
+COM7,4,trigger

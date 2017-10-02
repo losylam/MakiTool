@@ -1,13 +1,13 @@
 //Global variables
 HubManager hubManager;
 OutputManager outputManager;
-OscP5 osc;
+OscP5 osc; 
 
 //global variables
 int totalTracks;
 
 //play settings
-boolean useVolume = false; // if false, volume pin will have no effect
+boolean useVolume = true; // if false, volume pin will have no effect
 
 //display settings
 int globalRadius = 180;
@@ -18,16 +18,22 @@ int flowerSize = 31;
 
 void setup()
 {
-  fullScreen(2); //force on second display
+  //fullScreen(2); //force on second display
   
   frameRate(60);
-  //size(1280,800);
+  size(600,600);
   background(0);
   
   osc = new OscP5(this,64000);
   
+  println("Makey Orchestra, connected ports :");
+  println(Serial.list());
+  
   initHubs();
   initOutputs();  
+  
+  
+  hubManager.reset();
 }
 
 void draw()
@@ -53,15 +59,24 @@ void initHubs()
     String portName = hubSplit[0];
     
     int targetStart = startTrack;
-    if(type.equals("trigger")) targetStart = 0;
+    //if(type.equals("trigger")) targetStart = 0;
     
     hubManager.addHub(portName,targetStart,numTracks,type);
     
-    if(type.equals("track")) startTrack += numTracks;
+    //if(type.equals("track")) 
+    startTrack += numTracks;
     
   }
   
+  if(hubManager.hubs.size() == 1)
+  {
+    flowerRadius = globalRadius;
+    globalRadius = 0;
+  }
+  
   totalTracks = startTrack;
+  
+   
 }
 
 void initOutputs()
@@ -127,7 +142,7 @@ void keyPressed()
     break;
     
     case 't':
-    hubManager.hubs.get(4).triggerTrack(0);
+    hubManager.hubs.get(3).triggerTrack(0);
     break;
     
     case 'v':

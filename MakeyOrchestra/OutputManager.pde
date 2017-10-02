@@ -14,9 +14,9 @@ class OutputManager
     if(type.equals("live"))
     {
       output = new LiveOutput(numTracks, remoteIP,remotePort,midiName);
-    }else if(type.equals("xxx"))
+    }else if(type.equals("osc"))
     {
-      //to add outputs you want
+      output = new OSCOutput(numTracks,remoteIP,remotePort,midiName);
     }
     
     if(output == null)
@@ -26,6 +26,7 @@ class OutputManager
     }
     
     outputs.add(output);
+    output.init();
   }
   
   public void sendTrackMute(int track, boolean mute)
