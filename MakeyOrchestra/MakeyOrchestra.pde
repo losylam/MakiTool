@@ -7,14 +7,14 @@ OscP5 osc;
 int totalTracks;
 
 //play settings
-boolean useVolume = false; // if false, volume pin will have no effect
+boolean useVolume = true; // if false, volume pin will have no effect
 
 //display settings
 int globalRadius = 180;
-int flowerRadius = 80;
-int flowerSize = 31;
+int flowerRadius = 120;
+int flowerSize = 50;
 
-
+PFont Font;
 
 void setup()
 {
@@ -23,7 +23,11 @@ void setup()
   frameRate(60);
   //size(1280,800);
   background(0);
-  
+
+  Font = createFont("Arial Bold", 20);
+  textAlign(CENTER);
+  textFont(Font);
+
   osc = new OscP5(this,64000);
   
   initHubs();

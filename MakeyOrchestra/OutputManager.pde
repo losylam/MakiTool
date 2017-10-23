@@ -14,9 +14,9 @@ class OutputManager
     if(type.equals("live"))
     {
       output = new LiveOutput(numTracks, remoteIP,remotePort,midiName);
-    }else if(type.equals("xxx"))
+    }else if(type.equals("ardour"))
     {
-      //to add outputs you want
+      output = new ArdourOutput(numTracks, remoteIP,remotePort,midiName);
     }
     
     if(output == null)

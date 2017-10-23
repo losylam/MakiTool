@@ -59,7 +59,6 @@ class Hub extends PVector
     
     buffer = new int[32];
     
-    
     showText = true;
     
     connect();
@@ -82,7 +81,6 @@ class Hub extends PVector
       if(trackDims[i] == 0) continue;
       setTrackVolume(i, trackVolumes[i] + trackDims[i]);
     }
-    
     
     pushStyle();
     pushMatrix();
@@ -114,9 +112,10 @@ class Hub extends PVector
       
       if(showText)
       {
-        fill(255);
+        fill(hubColor);
         textSize(20);
-        text((startTrack+i+1)+"",trackCenter.x+flowerSize*.75f,trackCenter.y+flowerSize*.75f);
+        //        text((startTrack+i+1)+"",trackCenter.x+flowerSize*.75f,trackCenter.y+flowerSize*.75f);
+        text((startTrack+i+1)+"",trackCenter.x,trackCenter.y+6);
       }
     }
     
