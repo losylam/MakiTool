@@ -10,9 +10,9 @@ int totalTracks;
 boolean useVolume = true; // if false, volume pin will have no effect
 
 //display settings
-int globalRadius = 180;
-int flowerRadius = 120;
-int flowerSize = 50;
+int globalRadius = 300;
+int flowerRadius = 200;
+int flowerSize = 80;
 
 PFont Font;
 
@@ -37,7 +37,7 @@ void setup()
 void draw()
 {
   background(0);
-  hubManager.draw();
+  //hubManager.draw();
 }
 
 void initHubs()

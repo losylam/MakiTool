@@ -113,9 +113,9 @@ class Hub extends PVector
       if(showText)
       {
         fill(hubColor);
-        textSize(20);
+        textSize(34);
         //        text((startTrack+i+1)+"",trackCenter.x+flowerSize*.75f,trackCenter.y+flowerSize*.75f);
-        text((startTrack+i+1)+"",trackCenter.x,trackCenter.y+6);
+        text((startTrack+i+1)+"",trackCenter.x,trackCenter.y+12);
       }
     }
     

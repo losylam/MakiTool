@@ -1,5 +1,2 @@
 /dev/ttyACM0,6,track
 /dev/ttyACM1,6,track
-/dev/ttyACM2,6,track
-/dev/ttyACM3,6,track
-#COM6,3,trigger
