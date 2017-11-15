@@ -17,6 +17,9 @@ class OutputManager
     }else if(type.equals("ardour"))
     {
       output = new ArdourOutput(numTracks, remoteIP,remotePort,midiName);
+    }else if(type.equals("LGML"))
+    {
+      output = new LGMLOutput(numTracks, remoteIP,remotePort,midiName);
     }
     
     if(output == null)
