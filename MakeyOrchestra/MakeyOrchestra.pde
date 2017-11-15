@@ -37,7 +37,7 @@ void setup()
 void draw()
 {
   background(0);
-  //hubManager.draw();
+  hubManager.draw();
 }
 
 void initHubs()
