@@ -9,7 +9,7 @@ class LGMLOutput extends Output
   public  void sendTrackMute(int track, boolean mute)
   {
     OscMessage m = new OscMessage("/node/looper/tracks/"+track+"/mute");
-    m.add(mute?1:0);
+    m.add(mute?1.0:0.0);
     osc.send(m,remote);
   }
   

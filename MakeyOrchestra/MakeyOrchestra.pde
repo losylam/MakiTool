@@ -20,7 +20,7 @@ void setup()
 {
   fullScreen(2); //force on second display
   
-  frameRate(60);
+  frameRate(20);
   //size(1280,800);
   background(0);
 
@@ -62,7 +62,7 @@ void initHubs()
     hubManager.addHub(portName,targetStart,numTracks,type);
     
     if(type.equals("track")) startTrack += numTracks;
-    
+    if(type.equals("switch")) startTrack += numTracks;
   }
   
   totalTracks = startTrack;

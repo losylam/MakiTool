@@ -1,2 +1,5 @@
-/dev/ttyACM0,6,track
-/dev/ttyACM1,6,track
+/dev/ttyACM0,6,switch
+/dev/ttyACM1,4,switch
+/dev/ttyACM2,4,switch
+/dev/ttyACM3,4,switch
+#/dev/ttyACM2,18,switch

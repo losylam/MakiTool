@@ -1,2 +1,5 @@
-#live,localhost,8000,loopMIDI Port
-live,200.200.1.1,9000,loopMIDI Port
+#LGML,192.168.5.2,20000,loopMIDI Port
+#LGML,localhost,8000,loopMIDI Port
+LGML,localhost,20000,loopMIDI Port
+#LGML,localhost,12000,loopMIDI Port
+#live,200.200.1.1,9000,loopMIDI Port
