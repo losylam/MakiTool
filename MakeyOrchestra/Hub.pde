@@ -1,10 +1,10 @@
 import processing.serial.*;
 
 enum HubType {
-  TRACK, TRIGGER
+  TRACK, TRIGGER, SWITCH
 };
 
-color[] hubColors = {color(50,255,0),color(50,0,255),color(255,255,0),color(255,100,0),color(0,255,255)};
+color[] hubColors = {color(50,255,0),color(255,255,0),color(50,0,255),color(255,100,0),color(0,255,255)};
 
 class Hub extends PVector
 {
@@ -183,6 +183,7 @@ class Hub extends PVector
     int track = type ==HubType.TRACK?floor(pin/3):pin; // if TRIGGER all pins are a trigger track
     int command = type == HubType.TRACK?pin%3:0; //if TRIGGER all pins are a trigger track
     
+    println("Process buffer : "+pin+"/"+val+"/"+track+"/"+command);
     if(track >= numTracks)
     {
       println("Wrong track : "+track);
@@ -195,7 +196,8 @@ class Hub extends PVector
       if(val == 1)
       {
         if(type == HubType.TRACK) toggleTrackActive(track);
-        else triggerTrack(track);
+        else if(type == HubType.TRIGGER) triggerTrack(track);
+        else if(type == HubType.SWITCH) switchTrack(track);
       }
       break;
       
@@ -212,17 +214,20 @@ class Hub extends PVector
   
   public void toggleTrackActive(int index)
   {
+    if(type == HubType.TRIGGER) return;
     setTrackActive(index,!trackActives[index]);
   }
   
   public void setTrackActive(int index, boolean value)
   {
+    if(type == HubType.TRIGGER) return;
     trackActives[index] = value;
     trackMuteCallback(startTrack+index,!trackActives[index]);
   }
   
   public void setTrackVolume(int index, float value)
   {
+    if(type == HubType.TRIGGER) return;
     if(!useVolume) return;
     trackVolumes[index] = min(max(value,0),1);
     trackVolumeCallback(startTrack+index,trackVolumes[index]);
@@ -233,5 +238,11 @@ class Hub extends PVector
     trackVolumes[index] = 0;
     trackAlphas[index] = 1;
     triggerCallback(startTrack+index);
+  }
+  
+  public void switchTrack(int index)
+  {
+    trackActives[index] = !trackActives[index];
+    trackMuteCallback(startTrack+index,!trackActives[index]);
   }
 }

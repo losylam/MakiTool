@@ -45,6 +45,7 @@ class HubManager
     HubType t = null;
     if(type.equals("track")) t = HubType.TRACK;
     else if(type.equals("trigger")) t = HubType.TRIGGER;
+    else if(type.equals("switch")) t = HubType.SWITCH;
     
     if(t == null)
     {
